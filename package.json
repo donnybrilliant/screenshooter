@@ -1,12 +1,22 @@
 {
   "name": "screenshooter",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
+  "description": "Screenshooter - for capturing screenshots from websites. A monorepo for containing server, frontend, and CLI.",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run start:server & npm run start:frontend",
+    "start:server": "cd server && npm run dev",
+    "start:frontend": "cd frontend && npm run dev"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "screenshot",
+    "puppeteer",
+    "webpage",
+    "capture",
+    "backend",
+    "frontend",
+    "cli"
+  ],
+  "author": "donnybrilliant",
   "license": "ISC"
 }
