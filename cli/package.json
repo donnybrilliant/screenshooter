@@ -1,6 +1,6 @@
 {
   "name": "screenshooter",
-  "version": "1.0.1",
+  "version": "0.1.0",
   "description": "Screenshooter uses puppeteer to take screenshots of a website.",
   "main": "shoot.js",
   "type": "module",
