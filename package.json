@@ -1,6 +1,6 @@
 {
   "name": "screenshooter",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Screenshooter - for capturing screenshots from websites. A monorepo for containing server, frontend, and CLI.",
   "private": true,
   "scripts": {
