@@ -45,8 +45,10 @@ npm link
 shoot <url>
 ```
 
-Output
+## Output
+
 Screenshots are saved in the current directory with a filename based on the URL and the current timestamp.
 
-Contributing
+### Contributing
+
 Contributions to Screenshooter are welcome. Please feel free to report any issues or submit pull requests.
