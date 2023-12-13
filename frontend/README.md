@@ -1,8 +1,35 @@
-# React + Vite
+# Screenshooter Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Screenshooter Frontend is a simple React application for taking screenshots of web pages using the Screenshooter API. It provides a user-friendly interface for entering a URL, fetching screenshots, and downloading them.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Enter a URL and capture web page screenshots.
+- User-friendly interface with loading and error states.
+- Automatically generates download links for screenshots.
+
+## Installation
+
+Clone this repository and navigate to the project directory.
+
+Install the dependencies:
+
+```
+npm install
+```
+
+Start development server:
+
+```
+npm run dev
+```
+
+Visit http://localhost:5173
+
+## Usage
+
+Enter a URL, click "Take Screenshot," and download the screenshot when ready.
+
+### Contributing
+
+Contributions to Screenshooter Frontend are welcome. Please feel free to report any issues or submit pull requests to enhance the application.
