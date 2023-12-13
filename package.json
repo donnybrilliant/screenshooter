@@ -1,0 +1,26 @@
+{
+  "name": "screenshooter",
+  "version": "1.0.1",
+  "description": "Screenshooter uses puppeteer to take screenshots of a website.",
+  "main": "shoot.js",
+  "type": "module",
+  "scripts": {
+    "shoot": "node shoot.js"
+  },
+  "bin": {
+    "shoot": "./shoot.js"
+  },
+  "keywords": [
+    "screenshot",
+    "puppeteer",
+    "cli",
+    "webpage",
+    "capture"
+  ],
+  "author": "donnybrilliant",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "puppeteer": "^21.6.0"
+  }
+}
