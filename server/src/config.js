@@ -5,3 +5,5 @@ import path from "path";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // Path to the screenshots directory
 export const screenshotsDir = path.join(__dirname, "../screenshots");
+// Port to run the server on
+export const PORT = process.env.PORT || 3000;

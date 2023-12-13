@@ -6,6 +6,7 @@ import {
   createFilenameFromUrl,
   cleanupScreenshotsFolder,
 } from "./utils.js";
+import { PORT } from "./config.js";
 
 // Take a screenshot of a URL
 async function takeScreenshot(req, res) {
@@ -56,7 +57,8 @@ async function takeScreenshot(req, res) {
     await page.screenshot({ path: filepath, type: "webp", fullPage: true });
     await browser.close();
 
-    res.json({ screenshotUrl: `/screenshots/${filename}` });
+    const screenshotUrl = `http://${req.hostname}:${PORT}/screenshots/${filename}`;
+    res.json({ screenshotUrl });
   } catch (e) {
     console.error("Error taking screenshot:", e.message);
     res.status(500).send("Error taking screenshot");
