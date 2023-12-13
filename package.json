@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "start": "npm run start:server & npm run start:frontend",
-    "start:server": "cd server && npm run dev",
-    "start:frontend": "cd frontend && npm run dev"
+    "start:server": "cd server && npm run start",
+    "start:frontend": "cd frontend && npm run start"
   },
   "keywords": [
     "screenshot",
