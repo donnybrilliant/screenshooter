@@ -35,7 +35,7 @@ node shoot.js <url>
 or
 
 ```
-nprm run shoot <url>
+npm run shoot <url>
 ```
 
 Link the package globally to use it from anywhere (optional):
