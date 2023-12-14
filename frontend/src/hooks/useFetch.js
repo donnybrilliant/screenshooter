@@ -8,13 +8,24 @@ const useFetch = () => {
   const fetchScreenshot = async (url) => {
     setLoading(true);
     setError(null);
-    setDownloadUrl(null); // Reset downloadUrl here
+    setDownloadUrl(null);
     try {
       const response = await fetch(`http://localhost:3000/shoot?url=${url}`);
-      const data = await response.json();
-      setDownloadUrl(data.screenshotUrl);
+      if (response.ok) {
+        const contentType = response.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
+          const data = await response.json();
+          setDownloadUrl(data.screenshotUrl);
+        } else {
+          const text = await response.text();
+          setError(text);
+        }
+      } else {
+        const errorText = await response.json();
+        setError(errorText.error);
+      }
     } catch (e) {
-      setError("Failed to fetch screenshot");
+      setError("Failed to fetch screenshot: " + e.message);
     } finally {
       setLoading(false);
     }

@@ -13,7 +13,7 @@ async function takeScreenshot(req, res) {
   const url = req.query.url;
 
   if (!isValidUrl(url)) {
-    return res.status(400).send("Invalid URL provided");
+    return res.status(400).json({ error: "Invalid URL provided" });
   }
 
   try {
@@ -61,7 +61,7 @@ async function takeScreenshot(req, res) {
     res.json({ screenshotUrl });
   } catch (e) {
     console.error("Error taking screenshot:", e.message);
-    res.status(500).send("Error taking screenshot");
+    res.status(500).json({ error: "Error taking screenshot" });
   }
 }
 
