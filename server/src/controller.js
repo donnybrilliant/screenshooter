@@ -19,7 +19,11 @@ async function takeScreenshot(req, res) {
   try {
     const browser = await puppeteer.launch({ headless: "new" });
     const page = await browser.newPage();
-    await page.goto(url, { waitUntil: "networkidle0" });
+    const modifiedUrl =
+      url.startsWith("http://") || url.startsWith("https://")
+        ? url
+        : `https://${url}`;
+    await page.goto(modifiedUrl, { waitUntil: "networkidle0" });
     // Modify the root element's display property
     await page.evaluate(() => {
       const rootElement = document.querySelector("#root");

@@ -4,14 +4,10 @@ import cron from "node-cron";
 import { screenshotsDir } from "./config.js";
 
 // Check if a string is a valid URL
-export function isValidUrl(string) {
-  try {
-    new URL(string);
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
+export const isValidUrl = (url) => {
+  const urlRegex = /^(?:(?:https?|ftp):\/\/)?[^\s/$.?#].[^\s]*$/i;
+  return urlRegex.test(url);
+};
 
 // Create a filename from a URL
 export function createFilenameFromUrl(url) {

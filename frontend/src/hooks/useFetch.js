@@ -5,11 +5,30 @@ const useFetch = () => {
   const [error, setError] = useState(null);
   const [downloadUrl, setDownloadUrl] = useState(null);
 
+  // Check if a string is a valid URL
+  const isValidUrl = (url) => {
+    try {
+      // Check if the URL starts with 'http://' or 'https://'
+      if (!url.match(/^(http:\/\/|https:\/\/)/i)) {
+        // If not, prepend 'http://' to the URL
+        url = `http://${url}`;
+      }
+
+      new URL(url);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  };
+
   const fetchScreenshot = async (url) => {
     setLoading(true);
     setError(null);
     setDownloadUrl(null);
     try {
+      if (!isValidUrl(url)) {
+        return setError("Invalid URL provided");
+      }
       const response = await fetch(`http://localhost:3000/shoot?url=${url}`);
       if (response.ok) {
         const contentType = response.headers.get("content-type");
@@ -25,7 +44,7 @@ const useFetch = () => {
         setError(errorText.error);
       }
     } catch (e) {
-      setError("Failed to fetch screenshot: " + e.message);
+      setError("Error: " + e.message);
     } finally {
       setLoading(false);
     }
