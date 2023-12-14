@@ -4,6 +4,7 @@ const useFetch = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [downloadUrl, setDownloadUrl] = useState(null);
+  const BASE_URL = "http://localhost:3000";
 
   // Check if a string is a valid URL
   const isValidUrl = (url) => {
@@ -29,7 +30,7 @@ const useFetch = () => {
       if (!isValidUrl(url)) {
         return setError("Invalid URL provided");
       }
-      const response = await fetch(`http://localhost:3000/shoot?url=${url}`);
+      const response = await fetch(`${BASE_URL}/shoot?url=${url}`);
       if (response.ok) {
         const contentType = response.headers.get("content-type");
         if (contentType && contentType.includes("application/json")) {
