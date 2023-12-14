@@ -27,6 +27,10 @@
   margin: 0.5rem;
 }
 
+a {
+  color: white;
+}
+
 button {
   cursor: pointer;
 }
