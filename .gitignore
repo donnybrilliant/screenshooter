@@ -3,3 +3,4 @@ node_modules
 *.webp
 .DS_Store
 screenshots
+dist
