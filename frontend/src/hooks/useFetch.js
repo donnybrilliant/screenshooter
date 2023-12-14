@@ -1,10 +1,10 @@
 import { useState } from "react";
+const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:3000";
 
 const useFetch = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [downloadUrl, setDownloadUrl] = useState(null);
-  const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
 
   // Check if a string is a valid URL
   const isValidUrl = (url) => {
