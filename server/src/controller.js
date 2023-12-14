@@ -68,7 +68,7 @@ async function takeScreenshot(req, res) {
     await page.screenshot({ path: filepath, type: "webp", fullPage: true });
     await browser.close();
 
-    const screenshotUrl = `http://${req.hostname}/screenshots/${filename}`;
+    const screenshotUrl = `/screenshots/${filename}`;
     res.json({ screenshotUrl });
   } catch (e) {
     console.error("Error taking screenshot:", e.message);
