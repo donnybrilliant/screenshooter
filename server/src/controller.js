@@ -1,5 +1,6 @@
 import puppeteer from "puppeteer";
 import path from "path";
+import fs from "fs";
 import { screenshotsDir } from "./config.js";
 import {
   isValidUrl,
@@ -17,6 +18,9 @@ async function takeScreenshot(req, res) {
   }
 
   try {
+    if (!fs.existsSync(screenshotsDir)) {
+      fs.mkdirSync(screenshotsDir, { recursive: true });
+    }
     const browser = await puppeteer.launch({
       headless: "new",
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
