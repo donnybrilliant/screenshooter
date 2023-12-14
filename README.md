@@ -16,6 +16,7 @@ Screenshooter Frontend is a React application that provides a user-friendly inte
 
 ## To-Do / Improvements
 
+- Better development/production management.
 - Create a common project for shared components.
 - Enhance URL validation for more robust checking.
 - Implement consistent error handling on both the frontend and backend.
