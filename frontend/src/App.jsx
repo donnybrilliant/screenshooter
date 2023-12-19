@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import useFetch from "./hooks/useFetch";
 import Input from "./components/Input";
 import Status from "./components/Status";
