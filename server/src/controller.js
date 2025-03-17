@@ -30,7 +30,29 @@ async function takeScreenshot(req, res) {
       url.startsWith("http://") || url.startsWith("https://")
         ? url
         : `https://${url}`;
-    await page.goto(modifiedUrl, { waitUntil: "networkidle0", timeout: 60000 });
+    await page.goto(modifiedUrl, { waitUntil: "networkidle2", timeout: 60000 });
+
+    // Scroll the page to load lazy-loaded images
+    await page.evaluate(async () => {
+      await new Promise((resolve) => {
+        let totalHeight = 0;
+        const distance = 100;
+        const timer = setInterval(() => {
+          const scrollHeight = document.body.scrollHeight;
+          window.scrollBy(0, distance);
+          totalHeight += distance;
+
+          if (totalHeight >= scrollHeight) {
+            clearInterval(timer);
+            resolve();
+          }
+        }, 100);
+      });
+    });
+
+    // Wait for a specific element that indicates the page is fully loaded
+    await page.waitForSelector("footer", { timeout: 30000 }); // Adjust the selector and timeout as needed
+
     // Modify the root element's display property
     await page.evaluate(() => {
       const rootElement = document.querySelector("#root");
@@ -45,14 +67,18 @@ async function takeScreenshot(req, res) {
       }
 
       // Adjust main wrapper to allow for full-page content
-      const wrapper = document.getElementById("wrapper");
+      const wrapper = document.querySelector("body"); //#wrapper
       if (wrapper) {
         wrapper.style.overflowY = "visible";
         wrapper.style.height = "auto";
         wrapper.style.maxHeight = "none";
 
         // Make header non-sticky
-        document.querySelector("header").style.position = "relative";
+        const header = document.getElementById("header");
+        if (header) {
+          header.style.position = "relative";
+          header.style.minHeight = "100vh";
+        }
 
         // Expand scrollable areas
         document.querySelectorAll(".scrollarea").forEach((el) => {
