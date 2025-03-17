@@ -24,7 +24,17 @@
 }
 
 #status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0.5rem;
+  text-align: center;
+  min-height: 2rem;
+}
+
+#status p {
+  text-align: left;
+  min-width: 100px;
 }
 
 a {
@@ -40,9 +50,11 @@ button {
   height: 2rem;
   font-size: 1rem;
   padding-inline: 0.5rem;
+  position: relative;
 }
 
 @media (min-width: 560px) {
+
   input,
   button {
     height: 3rem;
@@ -51,6 +63,7 @@ button {
 }
 
 @media (min-width: 666px) {
+
   input,
   button {
     padding-inline: 1rem;
