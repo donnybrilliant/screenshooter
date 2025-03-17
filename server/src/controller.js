@@ -30,7 +30,7 @@ async function takeScreenshot(req, res) {
       url.startsWith("http://") || url.startsWith("https://")
         ? url
         : `https://${url}`;
-    await page.goto(modifiedUrl, { waitUntil: "networkidle0" });
+    await page.goto(modifiedUrl, { waitUntil: "networkidle0", timeout: 60000 });
     // Modify the root element's display property
     await page.evaluate(() => {
       const rootElement = document.querySelector("#root");
